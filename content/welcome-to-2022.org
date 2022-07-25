@@ -1,0 +1,25 @@
+#+TITLE: Welcome to 2022
+#+DATE: 2021-12-29
+#+PUBLISHED: true
+#+AUTHOR: Bryan Paronto
+#+CATEGORY: posts
+#+EMAIL: bryan@cablecar.digital
+#+TAGS: emacs orgmode
+
+Welcome to a new year and a new website from me. Unlike previous generations of website, I've set this one up to focus on output, specifically blog posts and to some extent as a publishing point for my personal technical notes.
+
+* New Year, New Goals
+As trite as ait sounds, New Years is a great time to evaluate your life, habit and how you spend your time. One of my biggest regrets so far in  my career is not having started a developer blog until now. I love writing and even went to college for it for a spell.
+
+That being said, my primary personal/professional goal for the year to is publish to this blog at least once a week. Stay tuned.
+
+* New Year, New Tools
+After 1.5 years using Neovim, I've recently made the switch to Emacs. I'm certainly not the first to make this switch and document it. I think it's "a thing" where people start using Emacs, immediately fall in love with org-mode and subsequently start a blog. I am not immune to it's charms.
+
+I spent the entirety of my Thanksgiving break configuring Emacs from nothing only to give up half way after realizing I was simply trying to run Doom Emacs with extra steps.
+
+It's said that Emacs is the best Operating System, missing only a good text editor. What an understatement. Within a month of adopting Emacs, it's now my email client, my RSS reader and my =git= gui. But more affecting than any of that is the introduction of Emacs most popular feature (citation unavailable), Org-Mode.
+
+* Welcome to our new Org Overlords.
+I will digress in this introduction post from pouring over the ways in which Emacs and Org-mode and improve your productivity, but for now I'll suffice it to say, this entire website was published using Org-mode
+** Project Planning
