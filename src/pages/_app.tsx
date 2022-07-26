@@ -1,15 +1,25 @@
-import "../../styles/globals.css";
+import React from "react";
 import type { AppProps } from "next/app";
 import { OrgaProvider } from "@orgajs/react";
 
-import "@fontsource/victor-mono";
+import "victormono";
+import "nerdfonts-web"
 import "@fontsource/material-icons";
-import { resetGlobalCss } from "../theme.config";
+import { resetGlobalCss, styled } from "../theme.config";
+import "highlight.js/styles/atom-one-dark.css";
+
+const Code = styled("code", {
+  backgroundColor: "pink",
+});
+
+const components = {
+  code: Code,
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   resetGlobalCss();
   return (
-    <OrgaProvider>
+    <OrgaProvider components={components}>
       <Component {...pageProps} />
     </OrgaProvider>
   );

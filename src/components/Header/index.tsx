@@ -3,7 +3,7 @@ import Link from "next/link";
 import { styled } from "../../theme.config";
 import { Container } from "../base";
 
-import { FaGithubAlt as GithubIcon, FaRss as RssIcon } from "react-icons/fa";
+import { FaGithubAlt as GithubIcon, FaRss as RssIcon, FaTwitch as TwitchIcon } from "react-icons/fa";
 import { MdAlternateEmail as EmailIcon } from "react-icons/md";
 
 export const HEADER_HEIGHT = 75;
@@ -144,11 +144,11 @@ export const Header = () => {
               <li>
                 <IconLink
                   as="a"
-                  href="/rss.xml"
+                  href="http://twitch.tv/cablecardigital"
                   target="_blank"
                   rel="noopener nofollow"
                 >
-                  <RssIcon />
+                  <TwitchIcon />
                 </IconLink>
               </li>
             </ul>

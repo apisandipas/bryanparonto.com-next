@@ -139,7 +139,7 @@ mu index
 
 Now that we have the ground work finished, we can finally (!) start to configure =mu4e=, out Emacs email client.
 
-#+begin_src emacs-lisp
+#+begin_src scheme
 (require 'mu4e)
 
 ;; list of your email adresses:

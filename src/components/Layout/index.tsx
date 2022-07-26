@@ -1,24 +1,24 @@
-import React from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import { Container } from "../base";
 import { Header, HEADER_HEIGHT } from "../Header";
+import hljs from "highlight.js";
 
 const Layout = ({ title, date, author, email, size = 2, children }) => {
+  useEffect(() => {
+    hljs.highlightAll();
+
+    hljs.configure({
+      languages: [{ "lisp": "emacs-lisp" }],
+    });
+  }, []);
+
   return (
     <>
       <Head>
         <meta charSet="utf-8" />
         <title>Bryan Paronto | Software Engineer & Technologist</title>
         <link rel="canonical" href="https://bryanparonto.com/" />
-
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/onedark.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
-        />
       </Head>
       <Header />
       <Container
@@ -56,7 +56,6 @@ const Layout = ({ title, date, author, email, size = 2, children }) => {
           </a>
         </Container>
       </footer>
-      <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
     </>
   );
 };

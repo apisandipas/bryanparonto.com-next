@@ -1,4 +1,5 @@
 import { styled } from "../theme.config";
+import Link from "next/link"
 
 export const Container = styled("div", {
   /* pt: '$6', */
@@ -39,3 +40,31 @@ export const SlantedSection = styled("section", {
     paddingBottom: "$20",
   },
 });
+
+
+export const TagWrapper = styled("div", {
+  fontSize: "var(--fontSizes-sm)",
+  display: "inline-block",
+  mb: "$2",
+  "@md": {
+    marginLeft: "auto",
+  },
+});
+
+export function Tag({ name }) {
+  return <Link href={`/tags/${name}`}>{name}</Link>;
+}
+
+
+export function Taglist({ tags }) {
+  return (
+    <TagWrapper>
+      {tags.map((tag) => (
+        <span key={tag}>
+          :
+          <Tag name={tag} />:
+        </span>
+      ))}
+    </TagWrapper>
+  );
+}

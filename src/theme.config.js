@@ -202,10 +202,10 @@ export const {
     fonts: {
       sans: 'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
       serif: 'Georgia,Cambria,"Times New Roman",Times,serif',
-      mono: '"VictorMono" "Material Icons", monospace',
-      body: '"Victor Mono", "Material Icons", system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+      mono: '"VictorMono", "NerdFontsSymbols Nerd Font", monospace',
+      body: '"Victor Mono", system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
       heading: '"Victor Mono", Helvetica, sans-serif',
-      monospace: '"Material Icons", monospace',
+      monospace: '"Victor Mono", monospace',
     },
     fontWeights: {
       thin: 100,
@@ -546,11 +546,13 @@ export const resetGlobalCss = globalCss(...normalize, {
       fill: "$odMagenta",
     },
   },
-  ".hljs": {
+  ".hljs, pre > code[class^='language-']": {
     padding: "$4",
+    display: "block",
+    overflow: "scroll",
     fontFamily: "$mono",
     borderRadius: "$xl",
-    backgroundColor: "$gray800",
-    border: "1px solid $colors$gray900",
+    backgroundColor: "rgb(40, 44, 52)",
+    // border: "1px solid rgb(40, 44, 52)",
   },
 });

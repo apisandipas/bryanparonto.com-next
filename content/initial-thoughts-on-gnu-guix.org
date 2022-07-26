@@ -29,4 +29,3 @@ As of a recent release it's now possible to not only configure basic system serv
 
 I'm not daily-driving Guix just yet, but I've been impressed enough with it so far, that it' certainly contending for the spot of my next choice in Linux distro. Watch this space for more updates.
 
-=foo=

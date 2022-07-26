@@ -1,8 +1,10 @@
+import React from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { getPostSlugs, getAllPosts } from "../lib/api";
-import { sortByDate } from "../lib/utils";
+import { getAllPosts } from "../lib/api";
 import { styled } from "../theme.config";
+import { Taglist } from "../components/base";
+
 const PostPreview = styled("div", {
   mb: "$4",
   mx: "$4",
@@ -18,34 +20,7 @@ const PostTitle = styled("header", {
   },
 });
 
-const TagWrapper = styled("div", {
-  fontSize: "var(--fontSizes-sm)",
-  display: "inline-block",
-  mb: "$2",
-  "@md": {
-    marginLeft: "auto",
-  },
-});
-
-function Tag({ name }) {
-  return <Link href={`/:${name}:`}>{name}</Link>;
-}
-
-function Taglist({ tags }) {
-  return (
-    <TagWrapper>
-      {tags.map((tag) => (
-        <span key={tag}>
-          :
-          <Tag name={tag} />:
-        </span>
-      ))}
-    </TagWrapper>
-  );
-}
-
 export default function Posts({ posts }) {
-  /* console.log({ posts }); */
   return (
     <Layout>
       {posts.map((post, index) => {
@@ -69,7 +44,6 @@ export default function Posts({ posts }) {
 
 export async function getStaticProps() {
   const posts = await getAllPosts(["frontmatter", "slug"]);
-  console.log({ fm: posts[0].frontmatter });
   return {
     props: {
       posts,

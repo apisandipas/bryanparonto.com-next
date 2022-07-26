@@ -6,26 +6,26 @@
 #+EMAIL: bryan@cablecar.digital
 #+TAGS: ricing emacs exwm polybar
 
-Welcome back. This is part 2 of 2 of my post(s) about working with Polybar in EXWM, the Emacs X Window Manager. If you havent yet, [[/working-with-polybar-in-exwm][go to part 1]] and have a read.
+Welcome back. This is part 2 of 2 of my post(s) about working with Polybar in EXWM, the Emacs X Window Manager. If you havent yet, [[/posts/working-with-polybar-in-exwm][go to part 1]] and have a read.
 
 Today we're going over how to add workspace indicators to Polybar.
 
 ** Workspace indicators in Polybar
 
 *** The Problem
-At present, EXWM does play nice with the default =xworkspaces= Polybar module. I think this may have something to do with the fact that we're rendering these workspaces within Emacs itself and not in separate X workspaces. (Someone with better understanding, please correct me!). Instead we utilized Polybar IPC functionality to hook into the EXWM workspace change hook and update the index of the workspace via Elisp. Below is my solution for this.
+At present, EXWM does not play nice with the default =xworkspaces= Polybar module. I think this may have something to do with the fact that we're rendering these workspaces within Emacs itself and not in separate X workspaces. (Someone with better understanding, please correct me!). Instead we utilized Polybar IPC functionality to hook into the EXWM workspace change hook and update the index of the workspace via Elisp. Below is my solution for this.
 
 *** My Solution
  First lets open our Polybar configuration. This file may be at =~/.config/polybar/config.ini= for you, but I tend to keep my EXWM-specific configuration in =~/.doom.d/exwm/polybar.config.ini=
 
  #+begin_src conf
 [module/exwm-ws-indicator]
-	type = custom/ipc
+  type = custom/ipc
   hook-0 = emacsclient -e "(bp/polybar-exwm-ws-indicator)" -s default | sed -e 's/^"//' -e 's/"$//'
-	initial = 1
-	format-underline = ${colors.magenta}
+  initial = 1
+  format-underline = ${colors.magenta}
   format-foreground = ${colors.magenta}
-	format-margin = 1
+  format-margin = 1
  #+end_src
 
  Then add the module to the =modules-*=  section of your choice. Here I'm chosing to place it in the center of the bar. Also, very important, make sure you're using the appropriate font for your icon set. I'm using =Iosevka Nerd Font= .
