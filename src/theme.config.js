@@ -369,20 +369,7 @@ export const {
       700: "700ms",
       1000: "1000ms",
     },
-    shiki: {
-      "color-text": "$color$odWhite",
-      "color-background": "$colors$gray700",
-      "token-constant": "$colors$odDarkYellow",
-      "token-string": "$colors$odGreen",
-      "token-comment": "$color$odMagenta",
-      "token-keyword": "$colors$odLightYellow",
-      "token-parameter": "$colors$odOrange",
-      "token-function": "$colors$odBlue",
-      "token-string-expression": "$color$odDarkRed",
-      "token-punctuation": "$colors$odGreen",
-      "token-link": "$color$odBlue",
-    },
-  },
+   },
   media: {
     sm: "(min-width: 640px)",
     md: "(min-width: 768px)",
@@ -469,7 +456,7 @@ export const resetGlobalCss = globalCss(...normalize, {
   "*": {
     boxSizing: "inherit",
   },
-  "html,__gatsby": {
+  "html,__next,": {
     height: "100%",
   },
   body: {
