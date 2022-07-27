@@ -34,7 +34,7 @@ export const {
       dark: "#2d3748",
       textMuted: "#718096",
 
-      odBlack: "rgb(39, 42, 57)",
+      odBlack: "#282c34",
       odWhite: "rgb(171, 178, 191)",
       odLightRed: "rgb(224, 108, 117)",
       odDarkRed: "rgb(190, 80, 70)",

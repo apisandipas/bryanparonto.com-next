@@ -1,0 +1,7 @@
+#+title: Braindump
+#+client: Personal Project
+#+launch_date: 2020
+#+tech: react nodejs express graphql
+#+url: https://github.com/apisandipas/braindump/
+
+This project was an Evernote clone I built at the start of the pandemic to shure up my `apollo-client` skills.

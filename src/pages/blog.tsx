@@ -34,7 +34,7 @@ export default function Posts({ posts }) {
               </h4>
               <Taglist tags={post.frontmatter.tags} />
             </PostTitle>
-            {/* <i> &lt;{formatDate(date)}&gt;</i> */}
+            <i> &lt;{post.frontmatter.date}&gt;</i>
           </PostPreview>
         );
       })}

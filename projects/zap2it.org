@@ -1,0 +1,8 @@
+#+title: Zap 2 It
+#+client: Tribune Media
+#+launch_date: 2015
+#+image: /projects/zap2it.png
+#+tech: react redis nodejs bootstrap
+#+url: https://zap2it.com
+
+Zap2It is a television listing provider. They came to the team at for a rebuild of an existing TV listings grid, which was suffering from poor performance. We re-engineered the application to a SPA build in React.
