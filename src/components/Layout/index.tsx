@@ -35,7 +35,7 @@ const Layout: FC<LayoutProps> = ({  size = "2", children }) => {
       <footer>
         <Container
           css={{
-            my: "$6",
+            py: "$6",
             textAlign: "center",
           }}
           size={3}
