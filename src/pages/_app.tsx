@@ -1,6 +1,8 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import { resetGlobalCss, styled } from "../theme.config";
+import { useAnalytics } from "../lib/useAnalytics";
+
 import "victormono";
 import "nerdfonts-web";
 import "@fontsource/material-icons";

@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { styled } from "../../theme.config";
 import { Container } from "../base";
-import Analytics from "./Analytics";
 
 import {
   FaGithubAlt as GithubIcon,
@@ -163,7 +162,6 @@ export const Header = () => {
       <MobileNav>
         <Navigation />
       </MobileNav>
-      <Analytics />
     </>
   );
 };

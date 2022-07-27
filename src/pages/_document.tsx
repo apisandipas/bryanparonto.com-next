@@ -1,11 +1,17 @@
-import React from "react"
+import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { getCssText } from "../theme.config";
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <style
+            id="stitches"
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
