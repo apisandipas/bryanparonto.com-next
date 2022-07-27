@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const tagID = "324853605";
+const tagID = "UA-33273583-1";
 
 export default function Analytics() {
   return (

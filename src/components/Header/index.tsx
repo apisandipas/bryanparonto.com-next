@@ -2,8 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { styled } from "../../theme.config";
 import { Container } from "../base";
+import Analytics from "./Analytics";
 
-import { FaGithubAlt as GithubIcon, FaTwitch as TwitchIcon } from "react-icons/fa";
+import {
+  FaGithubAlt as GithubIcon,
+  FaTwitch as TwitchIcon,
+} from "react-icons/fa";
 import { MdAlternateEmail as EmailIcon } from "react-icons/md";
 
 export const HEADER_HEIGHT = 75;
@@ -159,6 +163,7 @@ export const Header = () => {
       <MobileNav>
         <Navigation />
       </MobileNav>
+      <Analytics />
     </>
   );
 };
