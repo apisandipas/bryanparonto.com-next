@@ -95,7 +95,7 @@ export const Splash = () => {
           <HeroLeft>
             <div>
               <H1>
-                <span>Hi, I'm Bryan</span>
+                <span>Hi, I{"'"}m Bryan</span>
                 <br />
                 <span>
                   and I <Heart /> to code

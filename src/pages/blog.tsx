@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { getAllPosts } from "../lib/api";
+import { Post } from "../lib/types";
 import { styled } from "../theme.config";
 import { Taglist } from "../components/base";
 
@@ -20,7 +21,7 @@ const PostTitle = styled("header", {
   },
 });
 
-export default function Posts({ posts }) {
+const Posts = ({ posts }: { posts: Post[] }) => {
   return (
     <Layout>
       {posts.map((post, index) => {
@@ -40,7 +41,9 @@ export default function Posts({ posts }) {
       })}
     </Layout>
   );
-}
+};
+
+export default Posts;
 
 export async function getStaticProps() {
   const posts = await getAllPosts(["frontmatter", "slug"]);

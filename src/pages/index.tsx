@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
+import React from "react"
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/Layout";
 import { Splash } from "../components/Splash";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
 import { Container } from "../components/base";
 
 const Home: NextPage = () => {

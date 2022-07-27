@@ -1,16 +1,18 @@
-import { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import Head from "next/head";
 import { Container } from "../base";
 import { Header, HEADER_HEIGHT } from "../Header";
 import hljs from "highlight.js";
 
-const Layout = ({ title, date, author, email, size = 2, children }) => {
+type LayoutProps =  {
+  size?: any;
+  children: React.ReactNode
+}
+
+const Layout: FC<LayoutProps> = ({  size = "2", children }) => {
   useEffect(() => {
     hljs.highlightAll();
 
-    hljs.configure({
-      languages: [{ "lisp": "emacs-lisp" }],
-    });
   }, []);
 
   return (

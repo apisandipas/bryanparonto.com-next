@@ -1,3 +1,4 @@
+import React from "react"
 import { styled } from "../theme.config";
 import Link from "next/link"
 
@@ -51,15 +52,15 @@ export const TagWrapper = styled("div", {
   },
 });
 
-export function Tag({ name }) {
+export function Tag({ name }: { name: string}) {
   return <Link href={`/tags/${name}`}>{name}</Link>;
 }
 
 
-export function Taglist({ tags }) {
+export function Taglist({ tags }: { tags: string[] }) {
   return (
     <TagWrapper>
-      {tags.map((tag) => (
+      {tags?.map((tag) => (
         <span key={tag}>
           :
           <Tag name={tag} />:

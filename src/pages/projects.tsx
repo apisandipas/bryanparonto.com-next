@@ -57,7 +57,18 @@ const Title = styled("h1", {
   mb: "$4",
 });
 
-const ProjectCard = (props) => {
+interface Project {
+  id: any;
+  title: string;
+  image: string;
+  url: string;
+  content: string;
+  tech: string;
+  client: string;
+  launch_date: string;
+}
+
+const ProjectCard = (props: Project) => {
   const { title, image, url, content, tech, client, launch_date } = props;
   return (
     <ProjectCardWrapper>
@@ -84,20 +95,8 @@ const ProjectCard = (props) => {
   );
 };
 
-const data = [
-  {
-    id: 1,
-    title: "Project 1",
-    image: "/projects/zap2it.png",
-    url: "http://google.com",
-    html: "<div>Hello</div>",
-    tech: "React",
-    client: "Me",
-    launch_date: "2022-07-26",
-  },
-];
 
-export default function Projects({ projects }) {
+export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <>
       <Layout size={3}>
@@ -107,7 +106,6 @@ export default function Projects({ projects }) {
           return (
             <ProjectCard
               key={project.id + index}
-              onClick={() => console.log(project)}
               {...project}
             />
           );

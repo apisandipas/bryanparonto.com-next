@@ -4,13 +4,19 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Layout from "../../components/Layout";
 import { getAllPosts } from "../../lib/api";
+import { uniqueFilter } from "../../lib/utils"
+import { Post } from "../../lib/types"
 
-export default function Tag({ tags, slug }) {
+interface TagProps {
+  tags: Post[];
+  slug: string;
+}
+
+export default function Tag({ tags, slug }: TagProps) {
   const router = useRouter();
   if (!router.isFallback && !tags) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(tags);
   return (
     <Layout>
       <h2>Posts with: {slug}</h2>
@@ -21,10 +27,6 @@ export default function Tag({ tags, slug }) {
           </div>
         );
       })}
-      {/* {post} */}
-      {/* <h1>{post.frontmatter.title}</h1>
-          <small>{post.frontmatter.date}</small>
-          <div dangerouslySetInnerHTML={{ __html: post?.content }} /> */}
     </Layout>
   );
 }
@@ -37,20 +39,17 @@ type Params = {
 
 /* Return a list of possible value for id */
 export async function getStaticPaths() {
-  /* const slugs = await getPostSlugs(); */
-
   const posts = await getAllPosts();
-  const t = posts.filter((p) => p.frontmatter.tags);
-  console.log({t})
+  /* const t = posts.filter((p: Post) => p.frontmatter.tags); */
 
-  let tags = posts.reduce((acc, post) => {
+  let tags = posts.reduce((acc: any[], post: Post): string[] => {
     post.frontmatter.tags?.map((tag) => {
       acc.push(tag);
     });
     return acc;
   }, []);
 
-  tags = [...new Set(tags)]; //uniquify list
+  tags = tags.filter(uniqueFilter)
 
   return {
     paths: tags.map((slug) => ({
@@ -68,7 +67,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }: Params) {
   const posts = await getAllPosts();
-  const tags = posts.filter((p) => p.frontmatter.tags.includes(slug));
+  const tags = posts.filter((p: Post) => p.frontmatter.tags.includes(slug));
   return {
     props: {
       tags,

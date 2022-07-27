@@ -3,6 +3,7 @@ import path from "path";
 import metadata from "@orgajs/metadata";
 import orgToHtml from "./orgToHtml";
 import { sortByDate } from "./utils";
+import { Post } from "./types"
 
 const postsDirectory = path.join(process.cwd(), "content");
 const projectsDirectory = path.join(process.cwd(), "projects");
@@ -20,8 +21,9 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
     "utf-8"
   );
 
-  const frontmatter = metadata(orgdownWithMeta);
-  const content = await orgToHtml(orgdownWithMeta);
+  const frontmatter: any = metadata(orgdownWithMeta);
+  const content: string = await orgToHtml(orgdownWithMeta);
+
 
   const items = {};
   items["slug"] = slug;
@@ -31,19 +33,20 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = content;
     }
     if (field == "frontmatter") {
-      frontmatter.tags = frontmatter.tags?.split(' ') || []
+      const tags = frontmatter.tags;
+      frontmatter.tags = Array.isArray(tags) ? tags : tags?.split?.(' ');
       items[field] = frontmatter;
     }
   });
   return items;
 }
 
-export async function getAllPosts() {
+export async function getAllPosts(fields: string[] = []) {
   const postSlugs = getPostSlugs();
 
-  const posts = await Promise.all(
+  const posts: Post[] = await Promise.all(
     postSlugs.map(async function (slug) {
-      return await getPostBySlug(slug, ["frontmatter"]);
+      return await getPostBySlug(slug, ["frontmatter", ...fields]);
     })
   );
 
@@ -79,8 +82,7 @@ export async function getProjectsBySlug(slug, fields: string[] = [] ) {
       items[field] = content;
     }
     if (field == "frontmatter") {
-      // frontmatter.tech = frontmatter.tech?.split(' ')
-      items[field] = frontmatter;
+      items[field] = frontmatter as any;
     }
   });
   return items;

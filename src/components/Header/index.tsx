@@ -3,7 +3,7 @@ import Link from "next/link";
 import { styled } from "../../theme.config";
 import { Container } from "../base";
 
-import { FaGithubAlt as GithubIcon, FaRss as RssIcon, FaTwitch as TwitchIcon } from "react-icons/fa";
+import { FaGithubAlt as GithubIcon, FaTwitch as TwitchIcon } from "react-icons/fa";
 import { MdAlternateEmail as EmailIcon } from "react-icons/md";
 
 export const HEADER_HEIGHT = 75;
