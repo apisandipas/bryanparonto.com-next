@@ -4,15 +4,14 @@ import { Container } from "../base";
 import { Header, HEADER_HEIGHT } from "../Header";
 import hljs from "highlight.js";
 
-type LayoutProps =  {
+type LayoutProps = {
   size?: any;
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-const Layout: FC<LayoutProps> = ({  size = "2", children }) => {
+const Layout: FC<LayoutProps> = ({ size = "2", children }) => {
   useEffect(() => {
     hljs.highlightAll();
-
   }, []);
 
   return (
@@ -35,7 +34,7 @@ const Layout: FC<LayoutProps> = ({  size = "2", children }) => {
       <footer>
         <Container
           css={{
-            py: "$6",
+                py: "$6",
             textAlign: "center",
           }}
           size={3}
