@@ -22,4 +22,3 @@ It's said that Emacs is the best Operating System, missing only a good text edit
 
 * Welcome to our new Org Overlords.
 I will digress in this introduction post from pouring over the ways in which Emacs and Org-mode and improve your productivity, but for now I'll suffice it to say, this entire website was published using Org-mode
-** Project Planning

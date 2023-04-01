@@ -1,0 +1,26 @@
+#+TITLE: Welcome to 2023
+#+DATE: 2023-04-01
+#+PUBLISHED: true
+#+AUTHOR: Bryan Paronto
+#+CATEGORY: posts
+#+EMAIL: bryan@cablecar.digital
+#+TAGS: life-update
+
+You may notice but the publication date that this yearly post is a _little_ bit late. To say the very least, life has been busy for me. I'll digress on the exact details for now, but in the mean time, here's an update on what I've been up to.
+
+* Guix No More
+For the time being, I've stopped using Guix on my main laptop. I've found myself spending more time trying to configure it and get it up to 100% usable than actually using the laptop. For now, that's just not how I was to spend my time. At this moment I'm running Endeavour OS on all of my machines.
+
+* Emacs In Fewer Instances
+I've also rolled back my current usage of Emacs from using it for literally everything I could (email, RSS, IRC, Mastodon, window manager, etc) and have tried just using it for editing text as and IDE and a knowledge management tool (via org-roam). I'm using Doom emacs as a base, but has started trying to opt into more native Emacs features such as build-in `use-package`, `eglot` and `tree-sitter` functionalities in a different configration I've been working on on the side. For the curious, I'm currently using a theme based on Nicolas Rougiers NANO Emacs. It's purty and I like it quite a lot.
+
+* Welcome Wayland
+As mentioned above, I'm not currently using Emacs X Window Manager (EXWM) as my main window manager and have been giving Hyprland a go as my daily driver. So far I really like it. It's really eye catching, especially when compared to EXWM, and althought it's still in development, I've not experienced too many issues with it.
+
+* Living a Values-based life
+I've been giving a go at basting aside things in my life that make me unhappy and trying to live a life that aligns more with my personal values. This has taken the form of practicing mindfulness daily thru meditation, attending therapy (as everyone really should, it's been most helpful), exercise and trying to eat right.
+
+* What about Development?
+I've incidently not being doing much development outside of work these days. I'm looking for a side project that would be worth my time and efforts, but for now instead of making development my life, I've been focusing more on developing my life.
+
+That's enough of an update for now. Have a safe and effective day!
