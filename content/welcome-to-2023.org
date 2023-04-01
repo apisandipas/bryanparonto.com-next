@@ -6,7 +6,7 @@
 #+EMAIL: bryan@cablecar.digital
 #+TAGS: life-update
 
-You may notice but the publication date that this yearly post is a _little_ bit late. To say the very least, life has been busy for me. I'll digress on the exact details for now, but in the mean time, here's an update on what I've been up to.
+You may notice but the publication date that this yearly post is a little bit late. To say the very least, life has been busy for me. I'll digress on the exact details for now, but in the mean time, here's an update on what I've been up to.
 
 * Guix No More
 For the time being, I've stopped using Guix on my main laptop. I've found myself spending more time trying to configure it and get it up to 100% usable than actually using the laptop. For now, that's just not how I was to spend my time. At this moment I'm running Endeavour OS on all of my machines.
