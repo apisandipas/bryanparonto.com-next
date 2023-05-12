@@ -6,4 +6,4 @@
 #+url: http://alpinehomeair.com
 
 
-Alpine Home Air asked the team at Caxy to rebuild the, a new front end for their e-commerce presence. React, Redux and styled-components.
+Alpine Home Air asked the team at Caxy to rebuild their front end for their e-commerce presence. React, Redux and styled-components.
