@@ -8,7 +8,7 @@ import { uniqueFilter } from "../../lib/utils";
 import { Post } from "../../lib/types";
 
 interface TagProps {
-  tags: Post[];
+  posts: Post[];
   slug: string;
 }
 

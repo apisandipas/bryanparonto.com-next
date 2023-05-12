@@ -2,11 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { getAllPosts } from "../lib/api";
-import { Post } from "../lib/types"
-import { uniqueFilter } from "../lib/utils"
+import { Post } from "../lib/types";
+import { uniqueFilter } from "../lib/utils";
 
 export default function Tags({ tags }: { tags: string[] }) {
-  /* console.log({ posts }); */
   return (
     <Layout>
       {tags.map((tag, index) => {
@@ -20,12 +19,11 @@ export default function Tags({ tags }: { tags: string[] }) {
   );
 }
 
-
-export async function getStaticProps() {
-  const posts = await getAllPosts(["frontmatter", "slug"]);
+export function getStaticProps() {
+  const posts = getAllPosts(["slug", "title", "tags"]);
 
   let tags = posts.reduce((acc: string[], post: Post) => {
-    post.frontmatter.tags?.map((tag) => {
+    post.tags?.map((tag) => {
       acc.push(tag);
     });
     return acc;

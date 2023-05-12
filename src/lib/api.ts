@@ -41,12 +41,12 @@ export function getAllPosts(fields = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
-    .map((post: Post) => {
-      post.tags = post.tags.split(" ");
+    .map((post: any) => {
+      post.tags = post.tags?.split(" ");
       return post;
     })
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? "-1" : "1"));
+    .sort((post1, post2) => +new Date(post2.date) - +new Date(post1.date));
   return posts;
 }
 
