@@ -55,7 +55,7 @@ export function Tag({ name }: { name: string }) {
   return <Link href={`/tags/${name}`}>{name}</Link>;
 }
 
-export function Taglist({ tags }: { tags: string }) {
+export function Taglist({ tags }: { tags: string[] }) {
   return (
     <TagWrapper>
       {tags?.map((tag) => (
