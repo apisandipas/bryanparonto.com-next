@@ -95,20 +95,13 @@ const ProjectCard = (props: Project) => {
   );
 };
 
-
 export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <>
       <Layout size={3}>
         <Title>Projects</Title>
         {projects?.map((project, index) => {
-          console.log({ project });
-          return (
-            <ProjectCard
-              key={project.id + index}
-              {...project}
-            />
-          );
+          return <ProjectCard key={project.id + index} {...project} />;
         })}
       </Layout>
     </>
@@ -117,7 +110,6 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
 export async function getStaticProps() {
   const projects = await getAllProjects();
-  console.log({ projects });
   return {
     props: {
       projects,

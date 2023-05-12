@@ -38,18 +38,18 @@ export default function Post(post) {
 
   return (
     <Layout>
-      <h1>{post.frontmatter.title}</h1>
+      <h1>{post.title}</h1>
       <PostMeta>
-        <small>{post.frontmatter.date} by Bryan Paronto</small>
+        <small>{post.date} by Bryan Paronto</small>
 
-        <Taglist tags={post.frontmatter.tags} />
+        <Taglist tags={post.tags} />
       </PostMeta>
       <div dangerouslySetInnerHTML={{ __html: content }} />
       <PostAttribution>
         <img src="/me.jpg" width={100} />
         <div>
           <strong>Bryan Paronto</strong> is a software engineer and all around
-          technology nerd living in Chicago with his girlfriend and their 3
+          technology nerd living in Chicago with his girlfriend and their 2
           cats. He can be found here blogging or over on{" "}
           <Link href="http://twitch.tv/cablecardigital">Twitch</Link> talking to
           himself while he codes.
@@ -66,8 +66,8 @@ type Params = {
 };
 
 /* Return a list of possible value for id */
-export async function getStaticPaths() {
-  const slugs = await getPostSlugs();
+export function getStaticPaths() {
+  const slugs = getPostSlugs();
 
   return {
     paths: slugs.map((slug) => ({
@@ -81,8 +81,8 @@ export async function getStaticPaths() {
 
 // Fetch necessary data for the blog post using params.id
 
-export async function getStaticProps({ params: { slug } }: Params) {
-  const post = await getPostBySlug(slug, ["frontmatter", "content"]);
+export function getStaticProps({ params: { slug } }: Params) {
+  const post = getPostBySlug(slug, ["title", "content", "slug"]);
   return {
     props: post,
   };

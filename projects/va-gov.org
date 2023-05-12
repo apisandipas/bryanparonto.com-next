@@ -1,0 +1,9 @@
+#+title: VA.gov
+#+client: US Dept of Veterans Affairs
+#+launch_date: 2023
+#+image: /projects/va-gov.png
+#+tech: react graphql metalsmith
+#+url: http://va.gov/new-home-page
+
+
+I was embedded on the VA.gov public websites team. While there I build the new Homepage templates using Metalsmith, React and GraphQL. I was also able to assist in fixing a number of accessibility issues.

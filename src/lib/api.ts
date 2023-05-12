@@ -1,12 +1,10 @@
 import fs from "fs";
-import path from "path";
-import metadata from "@orgajs/metadata";
+import { join } from "path";
 import orgToHtml from "./orgToHtml";
-import { sortByDate } from "./utils";
-import { Post } from "./types"
+import { Post } from "./types";
 
-const postsDirectory = path.join(process.cwd(), "content");
-const projectsDirectory = path.join(process.cwd(), "projects");
+const postsDirectory = join(process.cwd(), "content");
+const projectsDirectory = join(process.cwd(), "projects");
 
 export function getPostSlugs() {
   const fileNames = fs.readdirSync(postsDirectory);
@@ -15,42 +13,41 @@ export function getPostSlugs() {
   });
 }
 
-export async function getPostBySlug(slug: string, fields: string[] = []) {
-  const orgdownWithMeta = fs.readFileSync(
-    path.join(postsDirectory, slug + ".org"),
-    "utf-8"
-  );
-
-  const frontmatter: any = metadata(orgdownWithMeta);
-  const content: string = await orgToHtml(orgdownWithMeta);
-
+export function getPostBySlug(slug, fields = []) {
+  const realSlug = slug.replace(/\.org$/, "");
+  const fullPath = join(postsDirectory, `${realSlug}.org`);
+  const content = fs.readFileSync(fullPath, "utf8");
+  const org = orgToHtml(content);
 
   const items = {};
-  items["slug"] = slug;
 
+  // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
-    if (field === "content") {
-      items[field] = content;
+    if (field === "slug") {
+      items[field] = realSlug;
     }
-    if (field == "frontmatter") {
-      const tags = frontmatter.tags;
-      frontmatter.tags = Array.isArray(tags) ? tags : tags?.split?.(' ');
-      items[field] = frontmatter;
+    if (field === "content") {
+      items[field] = String(org);
+    }
+    if (org.data[field]) {
+      items[field] = org.data[field];
     }
   });
+
   return items;
 }
 
-export async function getAllPosts(fields: string[] = []) {
-  const postSlugs = getPostSlugs();
-
-  const posts: Post[] = await Promise.all(
-    postSlugs.map(async function (slug) {
-      return await getPostBySlug(slug, ["frontmatter", ...fields]);
+export function getAllPosts(fields = []) {
+  const slugs = getPostSlugs();
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug, fields))
+    .map((post: Post) => {
+      post.tags = post.tags.split(" ");
+      return post;
     })
-  );
-
-  return posts.sort(sortByDate);
+    // sort posts by date in descending order
+    .sort((post1, post2) => (post1.date > post2.date ? "-1" : "1"));
+  return posts;
 }
 
 export function getProjectsSlugs() {
@@ -60,31 +57,27 @@ export function getProjectsSlugs() {
   });
 }
 
-export async function getProjectsBySlug(slug, fields: string[] = [] ) {
-  const orgdownWithMeta = fs.readFileSync(
-    path.join(projectsDirectory, slug + ".org"),
-    "utf-8"
-  );
+export async function getProjectsBySlug(slug, fields: string[] = []) {
+  const realSlug = slug.replace(/\.org$/, "");
+  const fullPath = join(projectsDirectory, `${realSlug}.org`);
+  const content = fs.readFileSync(fullPath, "utf8");
+  const org = orgToHtml(content);
 
-  const frontmatter = metadata(orgdownWithMeta);
-  const content = await orgToHtml(orgdownWithMeta);
+  const items = {};
 
-  const items = {
-    ...frontmatter
-  };
-  items["slug"] = slug;
-  items["content"] = content
-  // items
-
-
+  // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
-    if (field === "content") {
-      items[field] = content;
+    if (field === "slug") {
+      items[field] = realSlug;
     }
-    if (field == "frontmatter") {
-      items[field] = frontmatter as any;
+    if (field === "content") {
+      items[field] = String(org);
+    }
+    if (org.data[field]) {
+      items[field] = org.data[field];
     }
   });
+
   return items;
 }
 
@@ -93,7 +86,15 @@ export async function getAllProjects() {
 
   const projects = await Promise.all(
     projectsSlugs.map(async function (slug) {
-      return await getProjectsBySlug(slug, ["frontmatter"]);
+      return await getProjectsBySlug(slug, [
+        "title",
+        "image",
+        "url",
+        "content",
+        "tech",
+        "client",
+        "launch_date",
+      ]);
     })
   );
 

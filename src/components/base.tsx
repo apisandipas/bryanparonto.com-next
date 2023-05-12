@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 import { styled } from "../theme.config";
-import Link from "next/link"
+import Link from "next/link";
 
 export const Container = styled("div", {
   /* pt: '$6', */
@@ -42,7 +42,6 @@ export const SlantedSection = styled("section", {
   },
 });
 
-
 export const TagWrapper = styled("div", {
   fontSize: "var(--fontSizes-sm)",
   display: "inline-block",
@@ -52,12 +51,11 @@ export const TagWrapper = styled("div", {
   },
 });
 
-export function Tag({ name }: { name: string}) {
+export function Tag({ name }: { name: string }) {
   return <Link href={`/tags/${name}`}>{name}</Link>;
 }
 
-
-export function Taglist({ tags }: { tags: string[] }) {
+export function Taglist({ tags }: { tags: string }) {
   return (
     <TagWrapper>
       {tags?.map((tag) => (

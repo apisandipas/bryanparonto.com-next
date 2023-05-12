@@ -34,7 +34,7 @@ const Layout: FC<LayoutProps> = ({ size = "2", children }) => {
       <footer>
         <Container
           css={{
-                py: "$6",
+            py: "$6",
             textAlign: "center",
           }}
           size={3}
@@ -44,8 +44,12 @@ const Layout: FC<LayoutProps> = ({ size = "2", children }) => {
             org-mode
           </a>
           , using{" "}
-          <a href="https://orga.js.org/" target="_blank" rel="noreferrer">
-            orgajs
+          <a
+            href="https://github.com/rasendubi/uniorg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            uniorg
           </a>{" "}
           and{" "}
           <a

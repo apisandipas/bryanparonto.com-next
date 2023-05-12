@@ -22,6 +22,7 @@ const PostTitle = styled("header", {
 });
 
 const Posts = ({ posts }: { posts: Post[] }) => {
+  /* console.log(posts); */
   return (
     <Layout>
       {posts.map((post, index) => {
@@ -30,12 +31,12 @@ const Posts = ({ posts }: { posts: Post[] }) => {
             <PostTitle>
               <h4>
                 <Link href={`/posts/${post.slug}`}>
-                  {post.frontmatter.title}
+                  <a href={`/posts/${post.slug}`}>{post.title}</a>
                 </Link>
               </h4>
-              <Taglist tags={post.frontmatter.tags} />
+              <Taglist tags={post.tags} />
             </PostTitle>
-            <i> &lt;{post.frontmatter.date}&gt;</i>
+            <i> &lt;{post.date}&gt;</i>
           </PostPreview>
         );
       })}
@@ -45,8 +46,8 @@ const Posts = ({ posts }: { posts: Post[] }) => {
 
 export default Posts;
 
-export async function getStaticProps() {
-  const posts = await getAllPosts(["frontmatter", "slug"]);
+export function getStaticProps() {
+  const posts = getAllPosts(["slug", "title", "tags", "date"]);
   return {
     props: {
       posts,

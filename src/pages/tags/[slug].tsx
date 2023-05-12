@@ -4,26 +4,28 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Layout from "../../components/Layout";
 import { getAllPosts } from "../../lib/api";
-import { uniqueFilter } from "../../lib/utils"
-import { Post } from "../../lib/types"
+import { uniqueFilter } from "../../lib/utils";
+import { Post } from "../../lib/types";
 
 interface TagProps {
   tags: Post[];
   slug: string;
 }
 
-export default function Tag({ tags, slug }: TagProps) {
+export default function Tag({ posts, slug }: TagProps) {
   const router = useRouter();
-  if (!router.isFallback && !tags) {
+  if (!router.isFallback && !posts) {
     return <ErrorPage statusCode={404} />;
   }
   return (
     <Layout>
       <h2>Posts with: {slug}</h2>
-      {tags.map((post, index) => {
+      {posts.map((post, index) => {
         return (
           <div key={`tag_link_${index}`}>
-            <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+            <Link href={`/posts/${post.slug}`}>
+              <a href={`/posts/${post.slug}`}>{post.title}</a>
+            </Link>
           </div>
         );
       })}
@@ -38,40 +40,39 @@ type Params = {
 };
 
 /* Return a list of possible value for id */
-export async function getStaticPaths() {
-  const posts = await getAllPosts();
-  /* const t = posts.filter((p: Post) => p.frontmatter.tags); */
+export function getStaticPaths() {
+  const posts = getAllPosts(["tags"]);
 
   let tags = posts.reduce((acc: any[], post: Post): string[] => {
-    post.frontmatter.tags?.map((tag) => {
+    post.tags?.map((tag) => {
       acc.push(tag);
     });
     return acc;
   }, []);
 
-  tags = tags.filter(uniqueFilter)
+  tags = tags.filter(uniqueFilter);
 
   return {
     paths: tags.map((slug) => ({
-
       params: {
         slug,
       },
     })),
-    /* paths: [{ params: { slug: "polybar" } }], */
     fallback: false,
   };
 }
 
 // Fetch necessary data for the blog post using params.id
 
-export async function getStaticProps({ params: { slug } }: Params) {
-  const posts = await getAllPosts();
-  const tags = posts.filter((p: Post) => p.frontmatter.tags.includes(slug));
+export function getStaticProps({ params: { slug } }: Params) {
+  let posts = getAllPosts(["tags", "slug", "title"]);
+  console.log(posts);
+  posts = posts.filter((p) => p.tags.includes(slug));
+  console.log(posts);
   return {
     props: {
-      tags,
-      slug
+      posts,
+      slug,
     },
   };
 }

@@ -1,0 +1,9 @@
+#+title: Facets.me
+#+client: Personal project
+#+launch_date: 2023
+#+image: /projects/facetsdotme.png
+#+tech: react typescript trpc nextjs stitches.css
+#+url: http://github.com/apisandipas/facetsdotme
+
+
+Facets.me is a clone of Linktr.ee, a site used to share links to your online presence from a unified page. It was built on the T3 stack as an experiment and learning project. I'm most proud of the profile customization interface, picture to the left.

@@ -100,7 +100,7 @@ function Navigation() {
           <Link href="/blog">Writing</Link>
         </li>
         <li>
-          <a href="/bryan-paronto-resume-2022.pdf">Resume</a>
+          <a href="/bryan-paronto-resume-2023.pdf">Resume</a>
         </li>
       </ul>
     </Nav>
