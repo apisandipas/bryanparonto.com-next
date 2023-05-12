@@ -369,7 +369,7 @@ export const {
       700: "700ms",
       1000: "1000ms",
     },
-   },
+  },
   media: {
     sm: "(min-width: 640px)",
     md: "(min-width: 768px)",
@@ -533,8 +533,8 @@ export const resetGlobalCss = globalCss(...normalize, {
       fill: "$odMagenta",
     },
   },
-  ".hljs, pre > code[class^='language-']": {
-    padding: "$4",
+  ".[class^='language-']": {
+    padding: "$2",
     display: "block",
     overflow: "scroll",
     fontFamily: "$mono",

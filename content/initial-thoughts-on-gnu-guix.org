@@ -18,7 +18,7 @@ Guix (pronounced as geeks) is an advanced distribution of GNU/Linux that support
 
 When I encountered problems, which I did upon a few false tries in getting it set up the first time, there was really only one place to look. Not being able to log in after setting up the system? Well after checking my config code, I can see that I failed to add the declaration for adding a Window Manager. Makes perfect sense. SSH not working? Oh, it seems I forgot to declare the SSH Service. It may sound hairy but the above fixes were as simple as adding the following two lines to my configuration:
 
-#+begin_src scheme
+#+begin_src lisp
 (service mate-desktop-service-type)
 (service openssh-service-type)
 #+end_src

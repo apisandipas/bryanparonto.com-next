@@ -2,7 +2,6 @@ import React, { useEffect, FC } from "react";
 import Head from "next/head";
 import { Container } from "../base";
 import { Header, HEADER_HEIGHT } from "../Header";
-import hljs from "highlight.js";
 
 type LayoutProps = {
   size?: any;
@@ -10,10 +9,6 @@ type LayoutProps = {
 };
 
 const Layout: FC<LayoutProps> = ({ size = "2", children }) => {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
   return (
     <>
       <Head>
